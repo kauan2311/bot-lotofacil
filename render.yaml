@@ -1,8 +1,12 @@
-
 services:
   - type: web
     name: bot-lotofacil
     env: python
-    plan: free
-    buildCommand: ""
-    startCommand: python app.py
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app"
+    envVars:
+      - key: EMAIL_USER
+        value: seuemail@gmail.com
+      - key: EMAIL_PASS
+        value: suasenha
+    autoDeploy: true
